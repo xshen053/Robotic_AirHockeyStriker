@@ -1,0 +1,38 @@
+import math
+
+locOneCoorX = 0 #global variable for x coordinate location 1
+locOneCoorY = 0 #global variable for y coordinate location 1
+locTwoCoorX = 0 #global variable for x coordinate location 2
+locTwoCoorY = 0 #global variable for y coordinate location 2
+locThreeCoorX = 0 #global variable for x coordinate location 3
+locThreeCoorY = 0 #global variable for y coordinate location 3
+
+#add code for find.circles function
+
+#call find.circles on the first location of the puck
+for c in img.find_circles(threshold = 3500, x_margin = 10, y_margin = 10, r_margin = 10,r_min = 2, r_max = 100, r_step = 2):
+        img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
+        #set locOneCoorX to x coordinate of circle
+        locOneCoorX = c.x()
+        #set locOneCoorY to y coordinate of circle
+        locOneCoorY = c.y()
+        #print(c.x(), c.y())
+
+#call find circles on the second location of the puck
+for c in img.find_circles(threshold = 3500, x_margin = 10, y_margin = 10, r_margin = 10,r_min = 2, r_max = 100, r_step = 2):
+        img.draw_circle(c.x(), c.y(), c.r(), color = (255, 0, 0))
+        #set locTwoCoorX to x coordinate of circle
+        locTwoCoorX = c.x()
+        #set locTwoCoorY to y coordinate of circle
+        locTwoCoorY = c.y()
+        #print(c.x(), c.y())
+
+timeBetweenCoords = 0 #0 is a placeholder for right now, replace with actual time between coordinates
+#speed = distance/time
+#distance = distance formula
+distance = math.sqrt(((locOneCoorX - locTwoCoorX)**2) + ((locOneCoorY - locTwoCoorY)**2))
+speed = distance/timeBetweenCoords
+#not sure how to write the formula to use the
+#speed of the puck in relation to the other coordinates to find our third point
+#speed should be the slope of the line that the puck is travelling in
+#if speed is the slope then speed = (y3 - y2)/(x3 - x2)
